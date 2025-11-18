@@ -423,10 +423,12 @@ button:hover {
                 <h1>📬 Nos mande suas dúvidas</h1>
                 <p>Tem dúvidas ou precisa de orientação personalizada? Preencha o formulário abaixo e nossa equipe retornará o mais breve possível!</p>
 
-                <form id="contactForm">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="bee0b0a8-ac4d-4d34-8397-af7582d7fc03">
+
                     <div class="form-group">
                         <label for="nome">Nome Completo *</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+                        <input type="text" id="nome" name="name" required placeholder="Digite seu nome">
                     </div>
 
                     <div class="form-group">
@@ -436,8 +438,11 @@ button:hover {
 
                     <div class="form-group">
                         <label for="mensagem">Mensagem *</label>
-                        <textarea id="mensagem" name="mensagem" required placeholder="Conte-nos como podemos ajudar você..."></textarea>
+                        <textarea id="mensagem" name="message" required placeholder="Conte-nos como podemos ajudar você..."></textarea>
                     </div>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
 
                     <button type="submit">Enviar Mensagem</button>
                 </form>
@@ -463,19 +468,35 @@ button:hover {
         }
 
         // Formulário de contato
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
+            const form = this;
             const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            
-            this.reset();
-            
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-        });
-        
+
+            // Envia para Web3Forms
+            const formData = new FormData(form);
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                // Mostra mensagem de sucesso
+                successMessage.style.display = 'block';
+
+                // Reseta o formulário
+                form.reset();
+
+                // Some depois de 5s
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                alert("❌ Não foi possível enviar sua mensagem. Tente novamente.");
+            }
+        });        
 
         // ===== SISTEMA DE AULAS =====
         const aulas = {
