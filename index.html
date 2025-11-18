@@ -49,14 +49,33 @@
         transform: translateY(-100%);
     }
 
-    nav ul {
-        list-style: none;
+    nav .nav-wrapper {
         display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        padding: 0 1rem;
+        align-items: center;
+        justify-content: center; 
+        position: relative; 
+        width: 100%;
     }
+
+
+    .nav-logo {
+        position: absolute;
+        left: 1rem;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #FF3D77;
+        text-decoration: none;
+    }
+
+
+    nav .nav-center {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
 
     nav a {
         text-decoration: none;
@@ -79,7 +98,7 @@
     }
 
     /* ================================= */
-    /* PAGES + CONTAINER                 */
+    /* PAGINGAS / CONTAINER                 */
     /* ================================= */
 
     .container {
@@ -363,7 +382,7 @@
     }
 
     /* ================================= */
-    /* MOBILE FIXES (CORREÇÃO DE ZOOM)  */
+    /* MOBILE RESPONSIVO                 */
     /* ================================= */
 
     @media (max-width: 900px) {
@@ -396,18 +415,54 @@
             height: 0 !important;
         }
     }
+    /* ================================= */
+    /* NAVBAR RESPONSIVA                 */
+    /* ================================= */
+
+    @media (max-width: 768px) {
+
+        /* Faz o wrapper virar coluna */
+        nav .nav-wrapper {
+            flex-direction: column;
+            gap: .6rem;
+            padding: .5rem 0 .8rem;
+        }
+
+        .nav-logo {
+            position: relative;
+            left: 0;
+            margin-bottom: .3rem;
+            font-size: 1.9rem;
+            text-align: center;
+        }
+
+        nav .nav-center {
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: .45rem .9rem;
+            font-size: 1rem;
+        }
+    }
 
     </style>
 </head>
 <body>
 
-    <!-- NAVEGAÇÃO -->
+    <!-- NAV BAR -->
     <nav>
-        <ul>
-            <a href="#home" class="nav-link active" onclick="showPage('home', event)">Home</a>
-            <a href="#videos" class="nav-link" onclick="showPage('videos', event)">Aulas em Vídeo</a>
-            <a href="#contato" class="nav-link" onclick="showPage('contato', event)">Contato</a>
-        </ul>
+        <div class="nav-wrapper">
+            <a href="#home" class="nav-logo" onclick="showPage('home', event)">JobStart</a>
+
+            <ul class="nav-center">
+                <a href="#home" class="nav-link active" onclick="showPage('home', event)">Home</a>
+                <a href="#videos" class="nav-link" onclick="showPage('videos', event)">Aulas em Vídeo</a>
+                <a href="#contato" class="nav-link" onclick="showPage('contato', event)">Contato</a>
+            </ul>
+        </div>
     </nav>
 
 
