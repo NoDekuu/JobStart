@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="//code.tidio.co/lhul4kwgw7ljgsb7tk9hfnpjowxdin0u.js" async></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobStart - Seu começo</title>
+    <link rel="icon" href="📄">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+
+/* ------------------------------ */
+/* NAVEGAÇÃO                      */
+/* ------------------------------ */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #667eea;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    background: #667eea;
+    color: white;
+}
+
+
+/* ------------------------------ */
+/* ESTRUTURA DAS PÁGINAS          */
+/* ------------------------------ */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ------------------------------ */
+/* COMPONENTES                    */
+/* ------------------------------ */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+h2 {
+    color: #764ba2;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+
+/* ------------------------------ */
+/* BENEFÍCIOS                     */
+/* ------------------------------ */
+.benefits p {
+    color: #fff;
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+
+/* ------------------------------ */
+/* VÍDEOS                         */
+/* ------------------------------ */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-submenu {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 2rem 0;
+    padding: 0.5rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 15px;
+}
+
+.video-submenu a {
+    text-decoration: none;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    color: #667eea;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.video-submenu a:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    border-color: transparent;
+}
+
+.video-submenu a.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+
+/* ------------------------------ */
+/* ATIVIDADES                     */
+/* ------------------------------ */
+.atividades-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.atividade-item {
+    background: linear-gradient(to right, #f7f7ff 0%, #fff 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.atividade-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.atividade-item h3 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+
+/* ------------------------------ */
+/* FORMULÁRIOS                    */
+/* ------------------------------ */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.success-message {
+    display: none;
+    background: #4caf50;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+/* ------------------------------ */
+/* RESPONSIVIDADE                 */
+/* ------------------------------ */
+@media (max-width: 768px) {
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .video-submenu {
+        gap: 0.5rem;
+    }
+
+    .video-submenu a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
+            <li><a href="#videos" class="nav-link" onclick="showPage('videos')">Dicas em Vídeo</a></li>
+            <li><a href="#contato" class="nav-link" onclick="showPage('contato')">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Página Home -->
+        <div id="home" class="page active">
+            <div class="card">
+                <h1>🚀 Primeiro Emprego Jovem</h1>
+                <p><strong>Bem-vindo ao projeto JobStart!</strong> Aqui, a ideia é abrir caminho para quem está dando os primeiros passos rumo ao mercado de trabalho. Aquele território misterioso onde todo mundo pede <strong>"experiência"</strong>, mas ninguém explica direito como conseguir a tal experiência. Nosso foco é apresentar conceitos essenciais, orientar sobre como começar e mostrar que, mesmo sem um histórico profissional, sempre existe um ponto de partida viável.</p>
+
+                <p>Ao longo do projeto, exploramos desde o que realmente importa em um currículo até como se preparar para entrevistas sem parecer que sua alma saiu do corpo de nervoso. Trazemos dicas práticas, reflexões e conteúdos pensados para ajudar você a compreender melhor esse universo profissional que, convenhamos, às vezes mais parece um RPG no modo difícil. A intenção é simples: facilitar sua jornada e mostrar que o primeiro passo pode ser muito mais leve do que parece.</p>
+                
+                <h2>Sobre o Projeto</h2>
+                <p>Sabemos que conseguir o primeiro emprego pode ser desafiador. Por isso, criamos este espaço para capacitar jovens com as ferramentas e conhecimentos necessários para se destacarem no mercado de trabalho.</p>
+
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <h3>📚 Capacitação</h3>
+                        <p>Conteúdos educativos sobre elaboração de currículo, entrevistas e comportamento profissional</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🎯 Oportunidades</h3>
+                        <p>Informações sobre programas de trainee e vagas para jovens iniciantes</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>💡 Orientação</h3>
+                        <p>Dicas práticas de profissionais experientes para sua jornada profissional</p>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 2rem;">O que você pode esperar aqui?</h2>
+
+                <p>✨ <strong>Dicas em Vídeo:</strong> Assista aulas práticas para adquirir objetivos e se preparar com confiança para o mercado de trabalho.</p>
+                
+                <p>✨ <strong>Suporte Personalizado:</strong> Fale com nossa IA e tire suas dúvidas com orientação direta e individualizada.</p>
+                
+                <p>✨ <strong>Comunidade:</strong> Faça parte de uma comunidade de jovens que estão trilhando a mesma jornada e compartilhe experiências, desafios e conquistas. Tenha suas ideias de aulas, temas e dúvidas colocadas em futuros conteúdos.</p>
+
+            </div>
+        </div>
+
+        <!-- Página Vídeos -->
+        <div id="videos" class="page">
+            <div class="card">
+                <h1>🎬 Dicas em Vídeo</h1>
+                <p>Selecione uma aula para assistir e realizar as atividades!</p>
+
+                <!-- SUBMENU DAS AULAS -->
+                <div class="video-submenu">
+                    <a href="#" class="aula-link active" onclick="carregarAula('aula1')">🔥 Quem é você no corre?</a>
+                    <a href="#" class="aula-link" onclick="carregarAula('aula2')">💼 Trabalho não é castigo</a>
+                    <a href="#" class="aula-link" onclick="carregarAula('aula3')">🧠 Estude de forma inteligente</a>
+                </div>
+
+                <!-- VÍDEO -->
+                <div class="video-container">
+                    <iframe id="videoFrame" src="https://www.youtube.com/embed/JpWk8GA21dk" allowfullscreen></iframe>
+                </div>
+
+                <!-- ATIVIDADES -->
+                <h2 style="margin-top: 2rem;">📝 Atividades para Fixação</h2>
+                <div id="atividadesConteudo" class="atividades-container">
+                    <div class="atividade-item">
+                        <h3>✏️ 1. Autoanálise Express</h3>
+                        <p>O que você faz bem? Que tipo de trabalho você admira?</p>
+                    </div>
+                    <div class="atividade-item">
+                        <h3>💬 2. Quem é você?</h3>
+                        <p>Crie um parágrafo dizendo quem você é, o que busca e o que entrega.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página Contato -->
+        <div id="contato" class="page">
+            <div class="card">
+                <h1>📬 Nos mande suas dúvidas</h1>
+                <p>Tem dúvidas ou precisa de orientação personalizada? Preencha o formulário abaixo e nossa equipe retornará o mais breve possível!</p>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem *</label>
+                        <textarea id="mensagem" name="mensagem" required placeholder="Conte-nos como podemos ajudar você..."></textarea>
+                    </div>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Mensagem enviada com sucesso! Entraremos em contato em breve.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navegação entre páginas
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            this.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+
+        // ===== SISTEMA DE AULAS =====
+        const aulas = {
+            aula1: {
+                link: "https://www.youtube.com/embed/JpWk8GA21dk",
+                atividades: `
+                    <div class="atividade-item">
+                        <h3>✏️ 1. Autoanálise Express</h3>
+                        <p>O que você faz bem? Que tipo de trabalho você admira?</p>
+                    </div>
+                    <div class="atividade-item">
+                        <h3>💬 2. Quem é você?</h3>
+                        <p>Crie um parágrafo dizendo quem você é, o que busca e o que entrega.</p>
+                    </div>
+                `
+            },
+            aula2: {
+                link: "https://www.youtube.com/embed/RnPyU-p_SRU",
+                atividades: `
+                    <div class="atividade-item">
+                        <h3>📌 1. Lista de Interesse Profissional</h3>
+                        <p>Liste 5 áreas que gostaria de experimentar.</p>
+                    </div>
+                    <div class="atividade-item">
+                        <h3>🏢 2. Radar Local</h3>
+                        <p>Pesquise 3 empresas próximas que atuem nessas áreas.</p>
+                    </div>
+                    <div class="atividade-item">
+                        <h3>💼 3. Vagas</h3>
+                        <p>Encontre 1 vaga que aceitaria, 1 que recusaria e 1 negociável.</p>
+                    </div>
+                `
+            },
+            aula3: {
+                link: "https://www.youtube.com/embed/Ua_xIpv_5jg",
+                atividades: `
+                    <div class="atividade-item">
+                        <h3>📚 1. O que quero estudar?</h3>
+                        <p>Escolha 1 tema para estudar esta semana.</p>
+                    </div>
+                    <div class="atividade-item">
+                        <h3>🗓️ 2. Cronograma Realista</h3>
+                        <p>Monte uma agenda com 2–3 blocos semanais de estudo.</p>
+                    </div>
+                `
+            }
+        };
+
+        function carregarAula(aula) {
+            event.preventDefault(); // impede recarregar a página
+
+            // troca vídeo
+            document.getElementById("videoFrame").src = aulas[aula].link;
+
+            // troca atividades
+            document.getElementById("atividadesConteudo").innerHTML = aulas[aula].atividades;
+
+            // atualizar submenu ativo
+            document.querySelectorAll(".aula-link").forEach(link => link.classList.remove("active"));
+            event.target.classList.add("active");
+        }
+
+    </script>
+</body>
+</html>
