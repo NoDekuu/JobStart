@@ -4,426 +4,509 @@
     <script src="//code.tidio.co/lhul4kwgw7ljgsb7tk9hfnpjowxdin0u.js" async></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobStart - Seu começo</title>
-    <link rel="icon" href="📄">
+    <title>JobStart - Primeiro Emprego</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+
     <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* =============================== */
+        /* RESET                           */
+        /* =============================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
 
+        /* =============================== */
+        /* NAVIGAÇÃO                       */
+        /* =============================== */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-/* ------------------------------ */
-/* NAVEGAÇÃO                      */
-/* ------------------------------ */
-nav {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    padding: 0 1rem;
-}
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: 0.25s ease;
+        }
 
-nav a {
-    text-decoration: none;
-    color: #667eea;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-}
+        nav a:hover:not(.active) {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
 
-nav a:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-2px);
-}
+        nav a.active {
+            background: #667eea;
+            color: white;
+        }
 
-nav a.active {
-    background: #667eea;
-    color: white;
-}
+        /* =============================== */
+        /* PÁGINAS                         */
+        /* =============================== */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
 
-/* ------------------------------ */
-/* ESTRUTURA DAS PÁGINAS          */
-/* ------------------------------ */
-.container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
+        .page.active {
+            display: block;
+        }
 
-.page {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.page.active {
-    display: block;
-}
+        /* =============================== */
+        /* CARD BASE                       */
+        /* =============================== */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        h1 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
 
+        h2 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
 
-/* ------------------------------ */
-/* COMPONENTES                    */
-/* ------------------------------ */
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    margin-bottom: 2rem;
-}
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
 
-h1 {
-    color: #667eea;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-}
+        /* =============================== */
+        /* HERO                            */
+        /* =============================== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+        }
 
-h2 {
-    color: #764ba2;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-}
+        .hero-content h1 {
+            font-size: 3rem;
+        }
 
-p {
-    margin-bottom: 1rem;
-    color: #555;
-    font-size: 1.1rem;
-}
+        .hero-sub {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: .6rem;
+        }
 
+        .hero-text {
+            font-size: 1.15rem;
+            color: #444;
+            margin-bottom: 1.8rem;
+        }
 
-/* ------------------------------ */
-/* BENEFÍCIOS                     */
-/* ------------------------------ */
-.benefits p {
-    color: #fff;
-}
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
 
-.benefits {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
 
-.benefit-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
+        /* =============================== */
+        /* BENEFÍCIOS                      */
+        /* =============================== */
+        
+        .benefits p {
+            color: #ffffffec;
+        }
 
-.benefit-card:hover {
-    transform: translateY(-5px);
-}
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-.benefit-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
+        .benefit-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
 
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
 
-/* ------------------------------ */
-/* VÍDEOS                         */
-/* ------------------------------ */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    margin-top: 2rem;
-}
+        /* =============================== */
+        /* VÍDEO                           */
+        /* =============================== */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+        }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-.video-submenu {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 1.5rem 0 2rem 0;
-    padding: 0.5rem;
-    background: rgba(102, 126, 234, 0.05);
-    border-radius: 15px;
-}
+        .hero-video {
+            width: 100%;
+        }
 
-.video-submenu a {
-    text-decoration: none;
-    background: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    color: #667eea;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 2px solid #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+        /* =============================== */
+        /* SUBMENU AULAS                   */
+        /* =============================== */
+        .video-submenu {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0 2rem;
+            padding: .5rem;
+            background: rgba(255,255,255,0.4);
+            border-radius: 15px;
+        }
 
-.video-submenu a:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    border-color: transparent;
-}
+        .video-submenu a {
+            padding: .8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+            border-radius: 25px;
+            border: 2px solid #eee;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
 
-.video-submenu a.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
-}
+        .video-submenu a:hover:not(.active) {
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(102,126,234,0.25);
+        }
 
+        .video-submenu a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
 
-/* ------------------------------ */
-/* ATIVIDADES                     */
-/* ------------------------------ */
-.atividades-container {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
+        /* =============================== */
+        /* ATIVIDADES                      */
+        /* =============================== */
+        .atividades-container {
+            display: grid;
+            gap: 1rem;
+        }
 
-.atividade-item {
-    background: linear-gradient(to right, #f7f7ff 0%, #fff 100%);
-    border-left: 4px solid #667eea;
-    padding: 1.5rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .atividade-item {
+            background: linear-gradient(to right, #f7f7ff, #fff);
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            border-radius: 10px;
+            transition: 0.25s ease;
+        }
 
-.atividade-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-}
+        .atividade-item:hover {
+            transform: translateX(6px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.18);
+        }
 
-.atividade-item h3 {
-    color: #667eea;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
+        .atividade-item h3 {
+            margin-bottom: .5rem;
+            color: #667eea;
+        }
 
+        /* =============================== */
+        /* FORMULÁRIO                      */
+        /* =============================== */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
 
-/* ------------------------------ */
-/* FORMULÁRIOS                    */
-/* ------------------------------ */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.3rem;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
+        label {
+            font-weight: 600;
+            color: #667eea;
+        }
 
-label {
-    font-weight: 600;
-    color: #667eea;
-    margin-bottom: 0.5rem;
-}
+        input,
+        textarea {
+            padding: .9rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            transition: .2s ease;
+            width: 100%;
+        }
 
-input, textarea {
-    padding: 0.8rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-    font-family: inherit;
-}
+        input:focus,
+        textarea:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.4);
+            outline: none;
+        }
 
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #667eea;
-}
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
 
-textarea {
-    min-height: 150px;
-    resize: vertical;
-}
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.25s ease;
+            width: 100%;
+        }
 
-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: .5rem;
+        }
 
-.success-message {
-    display: none;
-    background: #4caf50;
-    color: white;
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 1rem;
-}
+        /* =============================== */
+        /* RESPONSIVIDADE                  */
+        /* =============================== */
+        @media (max-width: 780px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
 
+            .hero-video {
+                margin-top: 1.5rem;
+            }
 
-/* ------------------------------ */
-/* RESPONSIVIDADE                 */
-/* ------------------------------ */
-@media (max-width: 768px) {
-
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
-
-    nav ul {
-        gap: 1rem;
-    }
-
-    .card {
-        padding: 1.5rem;
-    }
-
-    .video-submenu {
-        gap: 0.5rem;
-    }
-
-    .video-submenu a {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-    }
-}
-
+            .video-container {
+                padding-bottom: 56.25%;
+                height: auto;
+            }
+        }
 
     </style>
 </head>
 <body>
+
+    <!-- NAVEGAÇÃO -->
     <nav>
         <ul>
-            <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
-            <li><a href="#videos" class="nav-link" onclick="showPage('videos')">Dicas em Vídeo</a></li>
-            <li><a href="#contato" class="nav-link" onclick="showPage('contato')">Contato</a></li>
+            <a href="#home" class="nav-link active" onclick="showPage('home', event)">Home</a>
+            <a href="#videos" class="nav-link" onclick="showPage('videos', event)">Aulas em Vídeo</a>
+            <a href="#contato" class="nav-link" onclick="showPage('contato', event)">Contato</a>
         </ul>
     </nav>
 
+
+    <!-- =============================== -->
+    <!-- 🌟 PÁGINA HOME / LANDING PAGE   -->
+    <!-- =============================== -->
     <div class="container">
-        <!-- Página Home -->
-        <div id="home" class="page active">
-            <div class="card">
-                <h1>🚀 Primeiro Emprego Jovem</h1>
-                <p><strong>Bem-vindo ao projeto JobStart!</strong> Aqui, a ideia é abrir caminho para quem está dando os primeiros passos rumo ao mercado de trabalho. Aquele território misterioso onde todo mundo pede <strong>"experiência"</strong>, mas ninguém explica direito como conseguir a tal experiência. Nosso foco é apresentar conceitos essenciais, orientar sobre como começar e mostrar que, mesmo sem um histórico profissional, sempre existe um ponto de partida viável.</p>
+    <div id="home" class="page active">
 
-                <p>Ao longo do projeto, exploramos desde o que realmente importa em um currículo até como se preparar para entrevistas sem parecer que sua alma saiu do corpo de nervoso. Trazemos dicas práticas, reflexões e conteúdos pensados para ajudar você a compreender melhor esse universo profissional que, convenhamos, às vezes mais parece um RPG no modo difícil. A intenção é simples: facilitar sua jornada e mostrar que o primeiro passo pode ser muito mais leve do que parece.</p>
-                
-                <h2>Sobre o Projeto</h2>
-                <p>Sabemos que conseguir o primeiro emprego pode ser desafiador. Por isso, criamos este espaço para capacitar jovens com as ferramentas e conhecimentos necessários para se destacarem no mercado de trabalho.</p>
+        <!-- HERO -->
+        <div class="card hero">
+            <div class="hero-content">
+                <h1> Seu Primeiro Emprego Começa Aqui</h1>
 
-                <div class="benefits">
-                    <div class="benefit-card">
-                        <h3>📚 Capacitação</h3>
-                        <p>Conteúdos educativos sobre elaboração de currículo, entrevistas e comportamento profissional</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>🎯 Oportunidades</h3>
-                        <p>Informações sobre programas de trainee e vagas para jovens iniciantes</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>💡 Orientação</h3>
-                        <p>Dicas práticas de profissionais experientes para sua jornada profissional</p>
-                    </div>
-                </div>
+                <p class="hero-sub">
+                    Aprenda o essencial para entrar no mercado com segurança, clareza e confiança.
+                </p>
 
-                <h2 style="margin-top: 2rem;">O que você pode esperar aqui?</h2>
+                <p class="hero-text">
+                    O JobStart guia você pelos primeiros passos do mundo profissional. Aqui você 
+                    encontra aulas diretas, exercícios práticos e orientações para transformar 
+                    incerteza em direção.
+                </p>
 
-                <p>✨ <strong>Dicas em Vídeo:</strong> Assista aulas práticas para adquirir objetivos e se preparar com confiança para o mercado de trabalho.</p>
-                
-                <p>✨ <strong>Suporte Personalizado:</strong> Fale com nossa IA e tire suas dúvidas com orientação direta e individualizada.</p>
-                
-                <p>✨ <strong>Comunidade:</strong> Faça parte de uma comunidade de jovens que estão trilhando a mesma jornada e compartilhe experiências, desafios e conquistas. Tenha suas ideias de aulas, temas e dúvidas colocadas em futuros conteúdos.</p>
-
+                <button class="cta-button" onclick="showPage('videos')">
+                    Começar Agora
+                </button>
             </div>
-        </div>
 
-        <!-- Página Vídeos -->
-        <div id="videos" class="page">
-            <div class="card">
-                <h1>🎬 Dicas em Vídeo</h1>
-                <p>Selecione uma aula para assistir e realizar as atividades!</p>
-
-                <!-- SUBMENU DAS AULAS -->
-                <div class="video-submenu">
-                    <a href="#" class="aula-link active" onclick="carregarAula('aula1')">🔥 Quem é você no corre?</a>
-                    <a href="#" class="aula-link" onclick="carregarAula('aula2')">💼 Trabalho não é castigo</a>
-                    <a href="#" class="aula-link" onclick="carregarAula('aula3')">🧠 Estude de forma inteligente</a>
-                </div>
-
-                <!-- VÍDEO -->
+            <div class="hero-video">
                 <div class="video-container">
-                    <iframe id="videoFrame" src="https://www.youtube.com/embed/JpWk8GA21dk" allowfullscreen></iframe>
-                </div>
-
-                <!-- ATIVIDADES -->
-                <h2 style="margin-top: 2rem;">📝 Atividades para Fixação</h2>
-                <div id="atividadesConteudo" class="atividades-container">
-                    <div class="atividade-item">
-                        <h3>✏️ 1. Autoanálise Express</h3>
-                        <p>O que você faz bem? Que tipo de trabalho você admira?</p>
-                    </div>
-                    <div class="atividade-item">
-                        <h3>💬 2. Quem é você?</h3>
-                        <p>Crie um parágrafo dizendo quem você é, o que busca e o que entrega.</p>
-                    </div>
+                    <iframe 
+                        src="https://www.youtube.com/embed/JpWk8GA21dk"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
 
-        <!-- Página Contato -->
-        <div id="contato" class="page">
-            <div class="card">
-                <h1>📬 Nos mande suas dúvidas</h1>
-                <p>Tem dúvidas ou precisa de orientação personalizada? Preencha o formulário abaixo e nossa equipe retornará o mais breve possível!</p>
 
-                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- BENEFÍCIOS -->
+        <div class="card">
+            <h2>O que você encontra aqui</h2>
+
+            <div class="benefits">
+                <div class="benefit-card">
+                    <h3>📚 Conteúdo Direto</h3>
+                    <p>Aprenda currículo, entrevista e postura profissional sem complicação.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>🎯 Direção Clara</h3>
+                    <p>Atividades práticas que te ajudam a entender seu caminho profissional.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>💼 Preparação Real</h3>
+                    <p>Dicas aplicáveis para conseguir a primeira oportunidade de verdade.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Por que isso importa?</h2>
+
+            <p>
+                Todo mundo cobra experiência, mas ninguém explica como conquistar a primeira. 
+                Aqui, você aprende na prática, do jeito certo e sem complicação.
+            </p>
+
+            <p>
+                Vamos te acompanhar até você estar seguro para entrar no mercado com confiança.         
+            </p>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- =============================== -->
+    <!-- 🎬 PÁGINA VÍDEOS / AULAS        -->
+    <!-- =============================== -->
+    <div class="container">
+    <div id="videos" class="page">
+
+        <div class="card">
+            <h1> Aulas em Vídeo</h1>
+            <p>Escolha uma aula abaixo, assista e faça as atividades práticas.</p>
+
+            <!-- SUBMENU AULAS -->
+            <div class="video-submenu">
+                <a href="#" class="aula-link active" onclick="carregarAula('aula1')">🔥 Quem é você no corre?</a>
+                <a href="#" class="aula-link" onclick="carregarAula('aula2')">💼 Trabalho não é castigo</a>
+                <a href="#" class="aula-link" onclick="carregarAula('aula3')">🧠 Estude de forma inteligente</a>
+            </div>
+
+            <!-- VÍDEO DINÂMICO -->
+            <div class="video-container">
+                <iframe id="videoFrame"
+                        src="https://www.youtube.com/embed/JpWk8GA21dk"
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- ATIVIDADES -->
+            <h2 style="margin-top: 2rem;"> Atividades</h2>
+
+            <div id="atividadesConteudo" class="atividades-container">
+                <div class="atividade-item">
+                    <h3>✏️ 1. Autoanálise Express</h3>
+                    <p>O que você faz bem? Que tipo de trabalho você admira?</p>
+                </div>
+                <div class="atividade-item">
+                    <h3> 💬 2. Quem é você?</h3>
+                    <p>Crie um parágrafo dizendo quem você é, o que busca e o que entrega.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- =============================== -->
+    <!-- 📬 PÁGINA CONTATO               -->
+    <!-- =============================== -->
+    <div class="container">
+        <div id="contato" class="page">
+
+            <div class="card">
+                <h1>📬 Entre em Contato</h1>
+                <p> Tem <strong>duvidas</strong> ou gostaria de mandar uma <strong>sugestão</strong> de aula?</p>
+                <p>Se precisar de ajuda é só preencher o formulário que nossa equipe responde rapidinho!</p>
+        
+
+                <form id="contactForm">
                     <input type="hidden" name="access_key" value="bee0b0a8-ac4d-4d34-8397-af7582d7fc03">
 
                     <div class="form-group">
@@ -444,58 +527,41 @@ button:hover {
                     <button type="submit">Enviar Mensagem</button>
                 </form>
 
-                <div class="success-message" id="successMessage">
+                <div class="success-message" id="successMessage" style="display: none;">
                     ✅ Mensagem enviada com sucesso! Entraremos em contato em breve.
                 </div>
+                
             </div>
+
         </div>
     </div>
-
+    
     <script>
-        // Navegação entre páginas
-        function showPage(pageId) {
+        /* =============================== */
+        /* 🧭 NAVEGAÇÃO ENTRE PÁGINAS      */
+        /* =============================== */
+        function showPage(pageId, event) {
+            // Impede o navegador de rolar até o ID (#home, #videos, #contato)
+            if (event) event.preventDefault();
+
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('.nav-link');
-            
+
             pages.forEach(page => page.classList.remove('active'));
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            document.getElementById(pageId).classList.add('active');
-            event.target.classList.add('active');
+
+            // Ativa a página
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) targetPage.classList.add('active');
+
+            // Ativa o link correto (procura href="#pageId")
+            const clickedLink = [...navLinks].find(a => a.getAttribute('href') === '#' + pageId);
+            if (clickedLink) clickedLink.classList.add('active');
         }
 
-        // Formulário de contato
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const form = this;
-            const successMessage = document.getElementById('successMessage');
-
-            // Envia para Web3Forms
-            const formData = new FormData(form);
-
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            });
-
-            if (response.ok) {
-                // Mostra mensagem de sucesso
-                successMessage.style.display = 'block';
-
-                // Reseta o formulário
-                form.reset();
-
-                // Some depois de 5s
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-            } else {
-                alert("❌ Não foi possível enviar sua mensagem. Tente novamente.");
-            }
-        });
-
-        // ===== SISTEMA DE AULAS =====
+        /* =============================== */
+        /* 🎬 SISTEMA DE AULAS             */
+        /* =============================== */
         const aulas = {
             aula1: {
                 link: "https://www.youtube.com/embed/JpWk8GA21dk",
@@ -515,15 +581,15 @@ button:hover {
                 atividades: `
                     <div class="atividade-item">
                         <h3>📌 1. Lista de Interesse Profissional</h3>
-                        <p>Liste 5 áreas que gostaria de experimentar.</p>
+                        <p>Liste 5 áreas que você gostaria de conhecer ou trabalhar.</p>
                     </div>
                     <div class="atividade-item">
                         <h3>🏢 2. Radar Local</h3>
-                        <p>Pesquise 3 empresas próximas que atuem nessas áreas.</p>
+                        <p>Pesquise 3 empresas próximas que atuam nessas áreas.</p>
                     </div>
                     <div class="atividade-item">
                         <h3>💼 3. Vagas</h3>
-                        <p>Encontre 1 vaga que aceitaria, 1 que recusaria e 1 negociável.</p>
+                        <p>Encontre 3 vagas: uma que aceitaria, uma que recusaria e uma negociável.</p>
                     </div>
                 `
             },
@@ -536,26 +602,104 @@ button:hover {
                     </div>
                     <div class="atividade-item">
                         <h3>🗓️ 2. Cronograma Realista</h3>
-                        <p>Monte uma agenda com 2–3 blocos semanais de estudo.</p>
+                        <p>Monte uma agenda com 2–3 sessões curtas de estudo na semana.</p>
                     </div>
                 `
             }
         };
 
-        function carregarAula(aula) {
-            event.preventDefault(); // impede recarregar a página
+        // Atualiza vídeo e atividades (sem usar 'event' global)
+        function carregarAula(aula, el) {
+            if (!aulas[aula]) return;
 
-            // troca vídeo
-            document.getElementById("videoFrame").src = aulas[aula].link;
+            const video = document.getElementById("videoFrame");
+            const atividades = document.getElementById("atividadesConteudo");
+            const links = document.querySelectorAll(".aula-link");
 
-            // troca atividades
-            document.getElementById("atividadesConteudo").innerHTML = aulas[aula].atividades;
+            if (video) video.src = aulas[aula].link;
+            if (atividades) atividades.innerHTML = aulas[aula].atividades;
 
-            // atualizar submenu ativo
-            document.querySelectorAll(".aula-link").forEach(link => link.classList.remove("active"));
-            event.target.classList.add("active");
+            links.forEach(a => a.classList.remove("active"));
+            if (el) el.classList.add("active");
         }
 
+        // Se os links de aula existirem, liga o listener — usa atributo onclick parseado do HTML (compatível com sua estrutura atual)
+        document.querySelectorAll(".aula-link").forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                // tenta extrair o identificador da aula do atributo onclick se existir
+                const onclickAttr = this.getAttribute("onclick") || "";
+                let aulaId = null;
+                const match = onclickAttr.match(/'(.*?)'/);
+                if (match && match[1]) {
+                    aulaId = match[1];
+                } else {
+                    // fallback: tenta ler um data-aula (se você quiser mudar no futuro)
+                    aulaId = this.dataset.aula || null;
+                }
+                if (aulaId) carregarAula(aulaId, this);
+            });
+        });
+
+        /* =============================== */
+        /* 📬 FORMULÁRIO (WEB3FORMS)       */
+        /* =============================== */
+        (function initForm() {
+            const form = document.getElementById("contactForm");
+            const successMessage = document.getElementById("successMessage");
+
+            if (!form) return;
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                try {
+                    const formData = new FormData(form);
+
+                    const response = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        if (successMessage) {
+                            successMessage.style.display = "block";
+                        }
+                        form.reset();
+                        setTimeout(() => {
+                            if (successMessage) successMessage.style.display = "none";
+                        }, 5000);
+                    } else {
+                        // tenta ler mensagem de erro do servidor (opcional)
+                        let text = await response.text();
+                        console.error("Web3Forms error:", text);
+                        alert("❌ Não foi possível enviar sua mensagem. Tente novamente.");
+                    }
+                } catch (err) {
+                    console.error("Erro ao enviar formulário:", err);
+                    alert("❌ Erro de rede ou do servidor. Tente novamente mais tarde.");
+                }
+            });
+        })();
+
+        /* ========================================= */
+        /*  FONTE BONITINHA CARREGADA VIA JS         */
+        /* ========================================= */
+
+        (function loadFont() {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap";
+            document.head.appendChild(link);
+
+            // aplica a fonte ao body quando carregar
+            link.onload = () => {
+                document.body.style.fontFamily = "'Poppins', sans-serif";
+            };
+        })();
+
+
     </script>
+
 </body>
 </html>
